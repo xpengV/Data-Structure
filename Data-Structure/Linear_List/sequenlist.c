@@ -8,15 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define maxsize 1024  /* 线性表最大长度，假设是1024 */
-
-typedef int datatype;
-
-typedef struct {
-    datatype data[maxsize];
-    int last;        /* last表示线性表终端结点在向量空间中的位置，所以last+1等于线性表的当前长度 */
-} sequenlist;
+#include "sequenlist_function.h"
 
 //初始化一个长度为5的顺序表
 void initlist(sequenlist *L,int length)
@@ -86,27 +78,4 @@ void delete(sequenlist *L,int i,int *res)
         }
         L->last--;
     }
-}
-
-int main()
-{
-    int res;
-    sequenlist *L;
-    L = (sequenlist *)malloc(sizeof(sequenlist));
-    L->last = 0;                /* 初始化空的线性表 */
-    
-    initlist(L,5);
-    showlist(L);
-    
-    /* 插入新元素 */
-    insert(L, 999, 4);
-    printf("----------插入元素完成----------\r\n");
-    showlist(L);
-    
-    /* 删除新元素 */
-    delete(L, 5, &res);
-    printf("----------删除元素完成----------\r\n");
-    showlist(L);
-    
-    return 0;
 }
